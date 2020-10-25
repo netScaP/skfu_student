@@ -7,20 +7,9 @@ import { getToken } from '@/utils/auth' // 验权
 import apiClient from './utils/feathers-client'
 
 function hasPermission(to, from, next) {
-  const userType = store.state.user.authUser.role
-
-  if (isAccessible(to, userType)) {
-    next()
-  } else {
-    next({ path: '/401', replace: true, query: { noGoBack: true } })
-  }
+  next()
 }
-
-function isAccessible(routeInfo, role) {
-  return role === 'student'
-}
-
-const whiteList = ['/', '/login', '/401', '/404'] // 不重定向白名单
+const whiteList = ['/', '/login', '/student', '/company', '/401', '/404'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (whiteList.indexOf(to.path) > -1) {

@@ -42,6 +42,12 @@ export const constantRouterMap = [
         component: () => import('@/pages/Company'),
         meta: { title: 'Компания', icon: 'dashboard' },
       },
+      {
+        path: 'profile/:id',
+        name: 'Profile',
+        component: () => import('@/pages/Profile'),
+        meta: { title: 'Профиль', icon: 'dashboard' },
+      },
     ],
   },
 
